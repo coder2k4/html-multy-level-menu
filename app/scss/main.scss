@@ -1,0 +1,146 @@
+@import "vars";
+@import "fonts";
+@import "mixins";
+@import "libs";
+@import "config"; // Всегда после библиотек
+
+.grid-container{
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: 100%;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  padding: 0 1rem;
+  background-color: #fff;
+  z-index: var(--z-fixed);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow:  0 2px 4px rgba(0,0,0,0.1);
+
+  &__logo{
+    color: var(--dark-color);
+    font-weight: bold;
+  }
+
+  &__toggle{
+    cursor: pointer;
+    font-size: 1.8rem;
+  }
+}
+
+
+.nav{
+  position: fixed;
+  top: 0;
+  left: -110%;
+  background-color: var(--first-color);
+  width: 90%;
+  height: 100vh;
+  padding: 2rem -0px;
+  z-index: var(--z-fixed);
+  overflow-x: hidden;
+  transition: .5s;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__img {
+    display: flex;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    & img {
+      width: 70px;
+
+    }
+  }
+
+  &__name {
+    display: block;
+    font-size: var(--h2-font-size);
+    color: var(--white-color);
+  }
+
+  &__item{
+    margin-bottom: 2rem;
+  }
+
+  &__link {
+    color: var(--first-color-alt);
+    &:hover {
+      color: var(--white-color);
+    }
+    &.active {
+      color: var(--white-color);
+    }
+  }
+
+  &.show {
+    left: 0;
+  }
+
+}
+
+.dropdown {
+  transition: .5s;
+  &__link{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__icon{
+    font-size: 1.3rem;
+    transition: .5s;
+  }
+
+  &__menu{
+    margin: 1rem -0px 0 1rem;
+    transition: all 1s ease-out;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  &__item{
+    margin: 1rem -0px;
+  }
+
+  &:hover > &__menu {
+    opacity: 1;
+    max-height: 500px;
+  }
+
+  &:hover &__icon {
+    transform: rotate(180deg);
+  }
+}
+
+
+
+@media screen and (min-width: 769px) {
+}
+
+@import "media"; // Всегда вконце
